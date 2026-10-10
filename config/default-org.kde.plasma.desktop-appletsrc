@@ -1,0 +1,107 @@
+[ActionPlugins]
+RightButton;NoModifier=org.kde.contextmenu
+Wheel:Vertical;NoModifier=switchdesktop
+
+# Containment 1 is the desktop (formfactor 0), containment 2 the panel
+# (formfactor 2, location 4 = bottom). Applet numbers are arbitrary but must
+# be unique within a containment, and the AppletOrder line must list every one
+# of them, or Plasma silently drops the rest.
+
+[Containments][1]
+activityId=
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.desktop
+wallpaperplugin=org.kde.image
+
+[Containments][1][General]
+lastResolution=1920x1080
+sortMode=-1
+
+[Containments][1][Wallpaper][org.kde.image][General]
+FillMode=PreserveAspectCrop
+Image=file:///usr/share/wallpapers/qinux/contents/images/3840x2160.png
+# The dark variant is what a dark session actually uses. Pointing at one file
+# means the light theme gets a dark wallpaper, which is why both exist.
+DarkImage=file:///usr/share/wallpapers/qinux/contents/images_dark/3840x2160.png
+
+[Containments][1][Applets][1]
+immutability=1
+plugin=org.kde.plasma.icons
+[Containments][1][Applets][1][Configuration][General]
+sortByType=true
+
+[Containments][1][Applets][2]
+immutability=1
+plugin=org.kde.plasma.calendar
+[Containments][1][Applets][2][Configuration][General]
+showWeekNumbers=false
+
+[Containments][1][Applets][3]
+immutability=1
+plugin=org.kde.plasma.digitalclock
+[Containments][1][Applets][3][Configuration][Appearance]
+showDate=true
+showSeconds=false
+showTimezone=false
+use24hFormat=true
+
+# --- Panel ---------------------------------------------------------------
+
+[Containments][2]
+activityId=
+formfactor=2
+immutability=1
+lastScreen=0
+location=4
+plugin=org.kde.panel
+
+[Containments][2][Applets][10]
+immutability=1
+plugin=org.kde.plasma.kickoff
+[Containments][2][Applets][10][Configuration][General]
+# Start with the application launcher rather than the overview, so a click
+# opens a searchable list instead of an overview grid.
+showApplications=false
+showSearch=false
+
+[Containments][2][Applets][11]
+immutability=1
+plugin=org.kde.plasma.pager
+
+[Containments][2][Applets][12]
+immutability=1
+plugin=org.kde.plasma.icontasks
+[Containments][2][Applets][12][Configuration][General]
+# Only the applications Qinux actually ships. A launcher pointing at an
+# uninstalled .desktop file is an empty icon the user cannot remove.
+launchers=applications:qinux-settings.desktop,applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop,applications:firefox.desktop
+
+[Containments][2][Applets][13]
+immutability=1
+plugin=org.kde.plasma.marginseparator
+
+[Containments][2][Applets][14]
+immutability=1
+plugin=org.kde.plasma.systemtray
+[Containments][2][Applets][14][Configuration][General]
+# knownItems pins the order and prevents new items from appearing at a random
+# spot. extraItems is what Plasma writes back and is ignored on load.
+knownItems=org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.keyboardlayout,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.notifications,org.kde.plasma.mediacontroller,org.kde.plasma.manage-inputmethod,org.kde.plasma.brightness
+
+[Containments][2][Applets][15]
+immutability=1
+plugin=org.kde.plasma.digitalclock
+[Containments][2][Applets][15][Configuration][Appearance]
+showDate=true
+showSeconds=false
+use24hFormat=true
+
+[Containments][2][Applets][16]
+immutability=1
+plugin=org.kde.plasma.showdesktop
+
+[Containments][2][General]
+AppletOrder=10;11;12;13;14;15;16
